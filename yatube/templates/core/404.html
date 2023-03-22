@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block title %}Опаньки 404{% endblock title %}
+{% block content %}
+  <h1>Опаньки 404</h1>
+  <p>Страницы с адресом {{ path }} не существует...</p>
+  <p>Не расстраивайся, загляни лучше на <a href='{% url "posts:index" %}'>главную</a>.</p>
+{% endblock %}
