@@ -25,10 +25,10 @@ class Post(models.Model):
         auto_now_add=True
     )
     author = models.ForeignKey(User, on_delete=models.CASCADE,
-                               related_name="posts")
+                               related_name='posts')
 
     group = models.ForeignKey(Group, blank=True, null=True,
-                              on_delete=models.SET_NULL, related_name="posts")
+                              on_delete=models.SET_NULL, related_name='posts')
 
     image = models.ImageField(
         'Картинка',
@@ -37,7 +37,7 @@ class Post(models.Model):
     )
 
     class Meta:
-        ordering = ["-pub_date"]
+        ordering = ['-pub_date']
 
     def __str__(self):
         # выводим текст поста
@@ -61,17 +61,17 @@ class Follow(models.Model):
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE,
-                             related_name="comments")
+                             related_name='comments')
     author = models.ForeignKey(User, on_delete=models.CASCADE,
-                               related_name="comments")
+                               related_name='comments')
     text = models.TextField(
-        verbose_name="Ваш комментарий",
-        help_text="Введите текст комментария"
+        verbose_name='Ваш комментарий',
+        help_text='Введите текст комментария'
     )
     created = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ["created"]
+        ordering = ['created']
 
     def __str__(self):
         return 'Comment by {} on {}'.format(self.author, self.post)
